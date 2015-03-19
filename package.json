@@ -1,0 +1,33 @@
+{
+  "name": "machinepack-datetime",
+  "version": "0.1.0",
+  "description": "Work the dates and times.",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha -b"
+  },
+  "keywords": [
+    "Datetime",
+    "machines",
+    "machinepack"
+  ],
+  "author": {
+    "name": "Scott Gress",
+    "email": "sgress454@treeline.io",
+    "url": "https://github.com/sgress454"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "machine": "^1.1.0",
+    "moment": "^2.9.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  },
+  "machinepack": {
+    "friendlyName": "Datetime",
+    "machineDir": "machines/",
+    "machines": [
+      "get-timestamp"
+    ]
+  }
+}
