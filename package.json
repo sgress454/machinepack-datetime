@@ -27,7 +27,8 @@
     "friendlyName": "Datetime",
     "machineDir": "machines/",
     "machines": [
-      "get-timestamp"
+      "get-timestamp",
+      "get-date-string"
     ]
   }
 }
