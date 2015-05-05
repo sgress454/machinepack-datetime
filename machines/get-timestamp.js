@@ -1,19 +1,19 @@
 module.exports = {
 
 
-  friendlyName: 'Get timestamp',
+  friendlyName: 'Parse date/time',
 
 
-  description: 'Get a Unix timestamp.',
+  description: 'Parse a Unix timestamp from a string containing a human-readable date and/or time.',
 
 
-  extendedDescription: 'Given a parseable datetime string, returns a Unix timestamp for that date.  Otherwise returns the current timestamp.',
+  extendedDescription: 'Given a parseable datetime string, returns a Unix timestamp for that date (number of miliseconds since January 1, 1970 at midnight, GMT.)  Otherwise returns the current timestamp.',
 
 
   inputs: {
 
     datetimeString: {
-      example: "2015-03-19T11:43:18-06:00"
+      example: '2015-03-19T11:43:18-06:00'
     }
 
   },
@@ -29,12 +29,13 @@ module.exports = {
     },
 
     success: {
-      description: 'Done.',
+      variableName: 'epochMs',
+      description: 'Returns the number of miliseconds elapsed between midnight (GMT) on January 1, 1970 and the parsed date/time.',
       example: 1318781876
     },
 
     badDatetimeString: {
-      friendlyName: "Bad datetime string",
+      friendlyName: 'Could not parse a time or date from the provided string.',
       void: true
     }
 
