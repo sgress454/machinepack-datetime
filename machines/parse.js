@@ -45,15 +45,15 @@ module.exports = {
 
     // Default to current date/time
     if (typeof inputs.datetimeString === 'undefined') {
-      return exits.success(Moment().getDate().getTime());
+      return exits.success(Moment().toDate().getTime());
     }
 
     // Or use the specified timestamp
-    var momentDatetime = Moment(inputs.datetimeString);
+    var momentDatetime = Moment(new Date(inputs.datetimeString));
     if (!momentDatetime.isValid()) {
       return exits.badDatetimeString();
     }
-    return exits.success(momentDatetime.getDate().getTime());
+    return exits.success(momentDatetime.toDate().getTime());
 
     // For posterity:
     // ======================================================================
