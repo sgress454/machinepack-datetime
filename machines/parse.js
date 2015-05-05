@@ -13,6 +13,8 @@ module.exports = {
   inputs: {
 
     datetimeString: {
+      friendlyName: 'Date/time string',
+      description: 'A string containing a human-readable date and/or time.',
       example: '2015-03-19T11:43:18-06:00'
     }
 
@@ -24,10 +26,6 @@ module.exports = {
 
   exits: {
 
-    error: {
-      description: 'Unexpected error occurred.',
-    },
-
     success: {
       variableName: 'epochMs',
       description: 'Returns the number of miliseconds elapsed between midnight (GMT) on January 1, 1970 and the parsed date/time.',
@@ -35,8 +33,8 @@ module.exports = {
     },
 
     badDatetimeString: {
-      friendlyName: 'Could not parse a time or date from the provided string.',
-      void: true
+      friendlyName: 'could not parse',
+      description: 'Could not parse a time or date from the provided string.',
     }
 
   },

@@ -13,13 +13,14 @@ module.exports = {
   inputs: {
 
     timestamp: {
-      description: 'A Unix timestamp (ms)',
+      friendlyName: 'Timestamp',
+      description: 'A Unix timestamp (in miliseconds)',
       extendedDescription: 'The number of miliseconds since midnight (GMT) on January 1, 1970.',
       example: 1318781876
     },
 
-    formatString: {
-      friendlyName: 'Format',
+    format: {
+      friendlyName: 'Desired format',
       description: 'A format string that will be used to format the date',
       extendedDescription: 'YYYY represents the year, "MM" the month (0-11), "DD" the date (0-indexed), "HH" the hour (0-23), "mm" the minute (0-59), "ss" the second (0-59), and "Z" the timezone difference from GMT/UTC.',
       example: 'YYYY-MM-DD HH:mm:ss Z',
@@ -29,14 +30,7 @@ module.exports = {
   },
 
 
-  defaultExit: 'success',
-
-
   exits: {
-
-    error: {
-      description: 'Unexpected error occurred.',
-    },
 
     success: {
       description: 'Done.',
@@ -61,7 +55,7 @@ module.exports = {
     } else {
       dateObj = moment();
     }
-    var format = inputs.formatString || 'YYYY-MM-DD HH:mm:ss Z';
+    var format = inputs.format || 'YYYY-MM-DD HH:mm:ss Z';
     return exits.success(dateObj.format(format));
   }
 
