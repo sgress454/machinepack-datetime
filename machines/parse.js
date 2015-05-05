@@ -4,10 +4,7 @@ module.exports = {
   friendlyName: 'Parse date/time',
 
 
-  description: 'Parse an absolute JS timestamp from a string containing a human-readable date and/or time.',
-
-
-  extendedDescription: 'Given a parseable datetime string, returns an absolute JS timestamp for that date (number of miliseconds since January 1, 1970 at midnight, GMT.)  Otherwise returns the timestamp for the current date/time.',
+  description: 'Parse a string containing a human-readable date, time, and/or timezone.',
 
 
   inputs: {
@@ -15,35 +12,27 @@ module.exports = {
     datetimeString: {
       friendlyName: 'Date/time string',
       description: 'A string containing a human-readable date and/or time and/or timezone.',
-      example: '2015-03-19T11:43:18-06:00'
-    },
-
-    timezoneOffset: {
-      friendlyName: 'Timezone offset',
-      description: 'If a timezone cannot be parsed, the timezone offset to assume (from UTC/GMT, in hours)',
-      extendedDescription: 'If a timezone cannot be parsed from the date/time string, this timezone offset will be used instead.  Defaults to 0 (GMT/UTC).',
-      example: -6,
-      defaultsTo: 0
+      example: 'March 19, 2015 11:43 AM'
     }
 
   },
 
 
-  defaultExit: 'success',
-
-
   exits: {
 
     success: {
-      variableName: 'epochMs',
-      description: 'Returns the number of miliseconds elapsed between midnight (GMT) on January 1, 1970 and the parsed date/time.',
-      moreInfoUrl: 'http://momentjs.com/docs/#/parsing/unix-offset/',
-      example: 1426786998000
+      variableName: 'result',
+      description: 'Returns information about the date/time.',
+      example: {
+        hasDate: true,
+        hasTime: true,
+        hasTimezone: true
+      }
     },
 
     badDatetimeString: {
       friendlyName: 'could not parse',
-      description: 'Could not parse a time or date from the provided string.',
+      description: 'Could not parse a date, time, or timezone from the provided string.',
     }
 
   },
