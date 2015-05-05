@@ -27,14 +27,13 @@ module.exports = {
       defaultsTo: 'YYYY-MM-DD HH:mm:ss Z'
     },
 
-    // TODO: support this in `fn`
-    // timezoneOffset: {
-    //   friendlyName: 'Timezone offset',
-    //   description: 'The timezone offset from UTC/GMT (in hours)',
-    //   extendedDescription: 'By default, the formatted date/time string returned will use the UTC/GMT timezone.'
-    //   example: -6,
-    //   defaultsTo: 0
-    // }
+    timezoneOffset: {
+      friendlyName: 'Timezone offset',
+      description: 'The timezone offset from UTC/GMT (in hours)',
+      extendedDescription: 'By default, the formatted date/time string returned will use the UTC/GMT timezone.',
+      example: -6,
+      defaultsTo: 0
+    }
 
   },
 
@@ -58,7 +57,7 @@ module.exports = {
 
     // Default to current date/time
     if (typeof inputs.timestamp === 'undefined') {
-      return exits.success(Moment.utc().format(inputs.format));
+      return exits.success(Moment.utc().zone(-1*inputs.timezoneOffset).format(inputs.format));
     }
 
     // Or use the specified timestamp
@@ -66,7 +65,7 @@ module.exports = {
     if (!dateObj.isValid()) {
       return exits.invalidTimestamp();
     }
-    return exits.success(dateObj.format(inputs.format));
+    return exits.success(dateObj.zone(-1*inputs.timezoneOffset).format(inputs.format));
   }
 
 

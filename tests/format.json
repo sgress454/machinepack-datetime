@@ -23,6 +23,47 @@
       },
       "outcome": "success",
       "returns": "2011-10-16"
+    },
+    {
+      "using": {
+        "timestamp": "1318781876000",
+        "format": "YYYY-MM-DD Z"
+      },
+      "outcome": "success",
+      "returns": "2011-10-16 +00:00"
+    },
+    {
+      "using": {
+        "timestamp": "1318781876000",
+        "timezoneOffset": "0"
+      },
+      "outcome": "success",
+      "returns": "2011-10-16 16:17:56 +00:00"
+    },
+    {
+      "using": {
+        "timestamp": "1318781876000",
+        "timezoneOffset": "-6"
+      },
+      "outcome": "success",
+      "returns": "2011-10-16 10:17:56 -06:00"
+    },
+    {
+      "using": {
+        "timestamp": "1430795727386",
+        "timezoneOffset": "-6"
+      },
+      "outcome": "success",
+      "returns": "2015-05-04 21:15:27 -06:00"
+    },
+    {
+      "using": {
+        "timestamp": "1430795727386",
+        "format": "HH:mm:ss",
+        "timezoneOffset": "-6"
+      },
+      "outcome": "success",
+      "returns": "21:15:27"
     }
   ]
 }
