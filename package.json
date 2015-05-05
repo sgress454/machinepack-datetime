@@ -31,7 +31,8 @@
     "machines": [
       "format",
       "timestamp",
-      "parse-date"
+      "parse-date",
+      "parse-time"
     ],
     "testsUrl": "https://travis-ci.org/sgress454/machinepack-datetime"
   },

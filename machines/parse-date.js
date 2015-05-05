@@ -7,6 +7,12 @@ module.exports = {
   description: 'Parse a string containing a human-readable date.',
 
 
+  cacheable: true,
+
+
+  sync: true,
+
+
   inputs: {
 
     monthDayYear: {
