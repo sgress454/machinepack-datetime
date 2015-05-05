@@ -45,16 +45,17 @@ module.exports = {
 
 
   fn: function (inputs,exits) {
-    var moment = require('moment');
-    var dateObj;
-    if (typeof inputs.timestamp !== 'undefined') {
-      dateObj = moment(inputs.timestamp);
+    var Moment = require('moment');
 
-      if (!dateObj.isValid()) {
-        return exits.invalidTimestamp();
-      }
-    } else {
-      dateObj = moment();
+    // Default to current date/time
+    if (typeof inputs.timestamp === 'undefined') {
+      return exits.success(Moment().format(inputs.format));
+    }
+
+    // Or use the specified timestamp
+    var dateObj = Moment(inputs.timestamp);
+    if (!dateObj.isValid()) {
+      return exits.invalidTimestamp();
     }
     return exits.success(dateObj.format(inputs.format));
   }

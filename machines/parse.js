@@ -42,18 +42,25 @@ module.exports = {
 
   fn: function (inputs,exits) {
     var Moment = require('moment');
-    if (typeof inputs.datetimeString !== 'undefined') {
-      var momentDatetime = Moment(inputs.datetimeString);
-      if (!momentDatetime.isValid()) {
-        return exits.badDatetimeString();
-      }
-      return exits.success(momentDatetime.getDate().getTime());
-    }
-    return exits.success(Moment().getDate().getTime());
 
+    // Default to current date/time
+    if (typeof inputs.datetimeString === 'undefined') {
+      return exits.success(Moment().getDate().getTime());
+    }
+
+    // Or use the specified timestamp
+    var momentDatetime = Moment(inputs.datetimeString);
+    if (!momentDatetime.isValid()) {
+      return exits.badDatetimeString();
+    }
+    return exits.success(momentDatetime.getDate().getTime());
+
+    // For posterity:
+    // ======================================================================
+    //
     // To create non-JS Unix timestamp (e.g. seconds rather than ms), use =>
     // Moment(someDatetimeStr).unix();
-
+    //
     // To parse from non-JS Unix timestamp (e.g. seconds rather than ms), use =>
     // Moment.unix(numSecondsSinceEpoch);
   }
