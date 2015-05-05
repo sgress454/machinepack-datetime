@@ -28,7 +28,7 @@ module.exports = {
     },
 
     // TODO: support this in `fn`
-    // timezone: {
+    // timezoneOffset: {
     //   friendlyName: 'Timezone offset',
     //   description: 'The timezone offset from UTC/GMT (in hours)',
     //   extendedDescription: 'By default, the formatted date/time string returned will use the UTC/GMT timezone.'
