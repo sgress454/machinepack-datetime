@@ -2,9 +2,27 @@
   "machine": "format",
   "expectations": [
     {
-      "todo": true,
-      "using": {},
-      "outcome": "success"
+      "using": {
+        "timestamp": "1318781876000"
+      },
+      "outcome": "success",
+      "returns": "2011-10-16 16:17:56 +00:00"
+    },
+    {
+      "using": {
+        "timestamp": "1318781876000",
+        "format": "YYYY"
+      },
+      "outcome": "success",
+      "returns": "2011"
+    },
+    {
+      "using": {
+        "timestamp": "1318781876000",
+        "format": "YYYY-MM-DD"
+      },
+      "outcome": "success",
+      "returns": "2011-10-16"
     }
   ]
 }

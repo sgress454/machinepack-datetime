@@ -16,7 +16,16 @@ module.exports = {
       friendlyName: 'Date/time string',
       description: 'A string containing a human-readable date and/or time.',
       example: '2015-03-19T11:43:18-06:00'
-    }
+    },
+
+    // TODO: support this in `fn`
+    // timezone: {
+    //   friendlyName: 'Timezone offset',
+    //   description: 'The timezone offset from UTC/GMT (in hours) to assume if it cannot be parsed.',
+    //   extendedDescription: 'If a timezone cannot be parsed from the date/time string, this timezone offset will be used instead.  Defaults to 0 (GMT/UTC).'
+    //   example: -6,
+    //   defaultsTo: 0
+    // }
 
   },
 

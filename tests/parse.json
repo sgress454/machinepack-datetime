@@ -2,9 +2,18 @@
   "machine": "parse",
   "expectations": [
     {
-      "todo": true,
-      "using": {},
-      "outcome": "success"
+      "using": {
+        "datetimeString": "February 1, 2015 12:00 AM UTC"
+      },
+      "outcome": "success",
+      "returns": "1422748800000"
+    },
+    {
+      "using": {
+        "datetimeString": "February 1, 2015 1:00 AM UTC"
+      },
+      "outcome": "success",
+      "returns": "1422752400000"
     }
   ]
 }
