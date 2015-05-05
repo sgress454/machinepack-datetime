@@ -34,7 +34,7 @@ module.exports = {
 
     success: {
       description: 'Done.',
-      example: '2015-27-19 12:27:44 -07:00'
+      example: '2011-10-16T10:17:56-06:00'
     },
 
     invalidTimestamp: {
