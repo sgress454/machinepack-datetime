@@ -42,7 +42,7 @@ module.exports = {
 
   fn: function (inputs,exits) {
     var moment = require('moment');
-    if (inputs.datetimeString) {
+    if (typeof inputs.datetimeString !== 'undefined') {
       var dateObj = moment(inputs.datetimeString);
       if (!dateObj.isValid()) {
         return exits.badDatetimeString();
