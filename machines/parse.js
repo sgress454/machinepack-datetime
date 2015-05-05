@@ -29,7 +29,7 @@ module.exports = {
     success: {
       variableName: 'epochMs',
       description: 'Returns the number of miliseconds elapsed between midnight (GMT) on January 1, 1970 and the parsed date/time.',
-      example: 1318781876
+      example: 1426786998000
     },
 
     badDatetimeString: {
@@ -41,15 +41,21 @@ module.exports = {
 
 
   fn: function (inputs,exits) {
-    var moment = require('moment');
+    var Moment = require('moment');
     if (typeof inputs.datetimeString !== 'undefined') {
-      var dateObj = moment(inputs.datetimeString);
-      if (!dateObj.isValid()) {
+      var momentDatetime = Moment(inputs.datetimeString);
+      if (!momentDatetime.isValid()) {
         return exits.badDatetimeString();
       }
-      return exits.success(dateObj.unix());
+      return exits.success(momentDatetime.getDate().getTime());
     }
-    return exits.success(moment().unix());
+    return exits.success(Moment().getDate().getTime());
+
+    // To create non-JS Unix timestamp (e.g. seconds rather than ms), use =>
+    // Moment(someDatetimeStr).unix();
+
+    // To parse from non-JS Unix timestamp (e.g. seconds rather than ms), use =>
+    // Moment.unix(numSecondsSinceEpoch);
   }
 
 };

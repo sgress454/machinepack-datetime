@@ -16,7 +16,7 @@ module.exports = {
       friendlyName: 'Timestamp',
       description: 'A Unix timestamp (in miliseconds)',
       extendedDescription: 'The number of miliseconds since midnight (GMT) on January 1, 1970.',
-      example: 1318781876
+      example: 1318781876000
     },
 
     format: {
@@ -48,15 +48,15 @@ module.exports = {
     var moment = require('moment');
     var dateObj;
     if (typeof inputs.timestamp !== 'undefined') {
-      dateObj = moment.unix(inputs.timestamp);
+      dateObj = moment(inputs.timestamp);
+
       if (!dateObj.isValid()) {
         return exits.invalidTimestamp();
       }
     } else {
       dateObj = moment();
     }
-    var format = inputs.format || 'YYYY-MM-DD HH:mm:ss Z';
-    return exits.success(dateObj.format(format));
+    return exits.success(dateObj.format(inputs.format));
   }
 
 
