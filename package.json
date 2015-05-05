@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "Work the dates and times.",
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/mocha -b"
+    "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
   },
   "keywords": [
     "Datetime",
@@ -22,14 +22,20 @@
     "moment": "^2.9.0"
   },
   "devDependencies": {
-    "mocha": "^2.1.0"
+    "mocha": "^2.1.0",
+    "test-machinepack-mocha": "^0.2.2"
   },
   "machinepack": {
     "friendlyName": "Datetime",
     "machineDir": "machines/",
     "machines": [
-      "get-timestamp",
-      "get-date-string"
-    ]
+      "parse",
+      "format"
+    ],
+    "testsUrl": "https://travis-ci.org/sgress454/machinepack-datetime"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sgress454/machinepack-datetime.git"
   }
 }
