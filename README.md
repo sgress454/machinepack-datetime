@@ -8,7 +8,7 @@
 Work the dates and times.
 
 
-## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-datetime.svg)](http://badge.fury.io/js/machinepack-datetime) [![Build Status](https://travis-ci.org/sgress454/machinepack-datetime.png?branch=master)](https://travis-ci.org/sgress454/machinepack-datetime)
+## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-datetime.svg)](http://badge.fury.io/js/machinepack-datetime) [![Build Status](https://travis-ci.org/mikermcneil/machinepack-datetime.png?branch=master)](https://travis-ci.org/mikermcneil/machinepack-datetime)
 
 ```sh
 $ npm install machinepack-datetime
