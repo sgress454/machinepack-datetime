@@ -4,7 +4,7 @@ module.exports = {
   friendlyName: 'Format date/time',
 
 
-  description: 'Build a date/time string from a Unix timestamp (miliseconds).',
+  description: 'Build a date/time string from a Unix timestamp (milliseconds).',
 
 
   extendedDescription: 'If no timestamp is provided, the current date and time will be used.',
@@ -14,9 +14,10 @@ module.exports = {
 
     timestamp: {
       friendlyName: 'Timestamp',
-      description: 'A Unix timestamp (in miliseconds)',
-      extendedDescription: 'The number of miliseconds since midnight (GMT/UTC) on January 1, 1970.',
-      example: 1318781876000
+      description: 'An epoch offset (in milliseconds)',
+      moreInfoUrl: 'http://momentjs.com/docs/#/parsing/unix-offset/',
+      extendedDescription: 'The number of milliseconds since midnight (GMT/UTC) on January 1, 1970.',
+      example: 1318781876000,
     },
 
     format: {

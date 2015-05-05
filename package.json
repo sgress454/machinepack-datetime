@@ -18,7 +18,8 @@
   "license": "MIT",
   "dependencies": {
     "machine": "^4.0.0",
-    "moment": "^2.9.0"
+    "moment": "^2.9.0",
+    "moment-timezone": "^0.3.1"
   },
   "devDependencies": {
     "mocha": "^2.1.0",

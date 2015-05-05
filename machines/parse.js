@@ -4,28 +4,27 @@ module.exports = {
   friendlyName: 'Parse date/time',
 
 
-  description: 'Parse a Unix timestamp from a string containing a human-readable date and/or time.',
+  description: 'Parse an absolute JS timestamp from a string containing a human-readable date and/or time.',
 
 
-  extendedDescription: 'Given a parseable datetime string, returns a Unix timestamp for that date (number of miliseconds since January 1, 1970 at midnight, GMT.)  Otherwise returns the current timestamp.',
+  extendedDescription: 'Given a parseable datetime string, returns an absolute JS timestamp for that date (number of miliseconds since January 1, 1970 at midnight, GMT.)  Otherwise returns the timestamp for the current date/time.',
 
 
   inputs: {
 
     datetimeString: {
       friendlyName: 'Date/time string',
-      description: 'A string containing a human-readable date and/or time.',
+      description: 'A string containing a human-readable date and/or time and/or timezone.',
       example: '2015-03-19T11:43:18-06:00'
     },
 
-    // TODO: support this in `fn`
-    // timezoneOffset: {
-    //   friendlyName: 'Timezone offset',
-    //   description: 'The timezone offset from UTC/GMT (in hours) to assume if it cannot be parsed.',
-    //   extendedDescription: 'If a timezone cannot be parsed from the date/time string, this timezone offset will be used instead.  Defaults to 0 (GMT/UTC).'
-    //   example: -6,
-    //   defaultsTo: 0
-    // }
+    timezoneOffset: {
+      friendlyName: 'Timezone offset',
+      description: 'If a timezone cannot be parsed, the timezone offset to assume (from UTC/GMT, in hours)',
+      extendedDescription: 'If a timezone cannot be parsed from the date/time string, this timezone offset will be used instead.  Defaults to 0 (GMT/UTC).',
+      example: -6,
+      defaultsTo: 0
+    }
 
   },
 
@@ -38,6 +37,7 @@ module.exports = {
     success: {
       variableName: 'epochMs',
       description: 'Returns the number of miliseconds elapsed between midnight (GMT) on January 1, 1970 and the parsed date/time.',
+      moreInfoUrl: 'http://momentjs.com/docs/#/parsing/unix-offset/',
       example: 1426786998000
     },
 
@@ -52,17 +52,37 @@ module.exports = {
   fn: function (inputs,exits) {
     var Moment = require('moment');
 
-    // Default to current date/time
+    var datetimeStr = '2015-03-18T16:10:00.001-0400';
+    var utcOffset = moment.parseZone(datetimeStr).UTCcOffset();
+
+    // Default to current date/time, using provided timezone offset
+    // or defaulting to UTC/GMT
     if (typeof inputs.datetimeString === 'undefined') {
       return exits.success(Moment().toDate().getTime());
     }
 
-    // Or use the specified timestamp
-    var momentDatetime = Moment(new Date(inputs.datetimeString));
-    if (!momentDatetime.isValid()) {
+    // Or attempt to parse the specified date/time string
+    var parsedMomentObj = Moment.parseZone(inputs.datetimeString);
+
+    // var momentDatetime = Moment(new Date(inputs.datetimeString));
+    if (!parsedMomentObj.isValid()) {
       return exits.badDatetimeString();
     }
-    return exits.success(momentDatetime.toDate().getTime());
+
+    // Now that we know the datetime string was valid, we'll determine
+    // whether it contained a timezone
+    // TODO: improve this-- this does false negatives when GMT is manually specified
+    if (parsedMomentObj.zone() !== 0) {
+      // If it DID contain a timezone, we're good, return the js epoch timestamp.
+      return exits.success(parsedMomentObj.toDate().getTime());
+    }
+
+    // If it DID NOT contain a timezone, we will **RE-PARSE** the datetime
+    // string using the specified timezone offset (or GMT/UTC if unspecified)
+    Moment(new Date());
+    // Then return the js epoch timestamp based on that newly parsed date/time.
+
+
 
     // For posterity:
     // ======================================================================
