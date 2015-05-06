@@ -1,10 +1,10 @@
 module.exports = {
 
 
-  friendlyName: 'Parse JSON date',
+  friendlyName: 'Parse JSON timestamp',
 
 
-  description: 'Parse JSON-formatted (ISO 8601) date/time/zone into a JS timestamp.',
+  description: 'Parse JSON-formatted (ISO 8601) date/time into a JS timestamp.',
 
 
   sync: true,
@@ -17,8 +17,14 @@ module.exports = {
 
     datetime: {
       friendlyName: 'JSON date',
-      description: 'The JSON-formatted (ISO 8601) date/time/zone',
+      description: 'The JSON-formatted (ISO 8601) date/time',
       example: '2015-05-06T00:49:45.767Z',
+      required: true
+    },
+
+    timezone: {
+      description: 'A human-readable timezone name.',
+      example: 'America/Chicago',
       required: true
     }
 
@@ -32,6 +38,11 @@ module.exports = {
       description: 'Could not build a date/time from the provided information.',
     },
 
+    unknownTimezone: {
+      friendlyName: 'invalid timezone',
+      description: 'Unrecognized timezone.'
+    },
+
     success: {
       variableName: 'timestamp',
       description: 'Returns JS timestamp (milliseconds since midnight on Jan 1, 1970 GMT)',
@@ -43,10 +54,22 @@ module.exports = {
 
   fn: function (inputs,exits) {
 
+    var _ = require('lodash');
     var MomentTz = require('moment-timezone');
 
-    // Build moment date in order to check validity
-    var momentObj = MomentTz.tz(Date.parse(inputs.datetime), 'Etc/Greenwich');
+    // Validate this is a known timezone
+    // (case-insensitive)
+    var foundTimezone = _.find(MomentTz.tz.names(), function (timezoneName){
+      if (inputs.timezone.toLowerCase().match(timezoneName.toLowerCase())) {
+        return timezoneName;
+      }
+    });
+    if (!foundTimezone) {
+      return exits.unknownTimezone();
+    }
+
+    // Build moment date using appropriate timezone in order to check validity
+    var momentObj = MomentTz.tz(Date.parse(inputs.datetime), foundTimezone);
     if (!momentObj.isValid()) {
       return exits.invalidDatetime();
     }

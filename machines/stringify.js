@@ -1,10 +1,10 @@
 module.exports = {
 
 
-  friendlyName: 'Stringify timestamp',
+  friendlyName: 'Stringify timestamp (to JSON)',
 
 
-  description: 'Convert a timestamp into conventional JSON date/time/zone format (ISO 8601)',
+  description: 'Convert a timestamp into conventional JSON date/time format (ISO 8601)',
 
 
   extendedDescription: 'If no timestamp is provided, the current date and time will be used.',
@@ -75,7 +75,7 @@ module.exports = {
     }
 
     // Format date
-    var resultStr = momentObj.format();
+    var resultStr = momentObj.toDate().toJSON();
     return exits.success(resultStr);
   }
 
