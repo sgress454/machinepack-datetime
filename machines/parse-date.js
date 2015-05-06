@@ -18,7 +18,7 @@ module.exports = {
     monthDayYear: {
       friendlyName: 'Date string',
       description: 'A string containing a human-readable date (but not a time or timezone).',
-      example: 'March 19, 2015',
+      example: 'December 25, 2015',
       required: true
     }
 
@@ -28,11 +28,11 @@ module.exports = {
   exits: {
 
     success: {
-      variableName: 'result',
+      variableName: 'date',
       description: 'Returns structured information about the date.',
       extendedDescription: '`date` is 1-indexed, `month` is 1-indexed, and `dayOfWeek` is 1-indexed starting with Sunday.',
       example: {
-        month: 11,
+        month: 12,
         date: 25,
         year: 2015,
         dayOfWeek: 'Monday',

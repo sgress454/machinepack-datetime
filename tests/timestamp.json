@@ -1,4 +1,14 @@
 {
   "machine": "timestamp",
-  "expectations": []
+  "expectations": [
+    {
+      "using": {
+        "date": "{\"month\": 12, \"date\": 25, \"year\": 2014}",
+        "time": "{\"hour\": 14, \"minute\": 30, \"second\": 0, \"millisecond\": 0}",
+        "timezone": "America/Chicago"
+      },
+      "outcome": "success",
+      "returns": "1419539400000"
+    }
+  ]
 }

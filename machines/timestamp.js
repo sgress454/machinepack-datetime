@@ -16,16 +16,30 @@ module.exports = {
   inputs: {
 
     date: {
-      example: '5/5/2015',
+      description: 'Structured information about an exact date (timezone-agnostic)',
+      extendedDescription: '`date` is 1-indexed, `month` is 1-indexed, and `dayOfWeek` is 1-indexed starting with Sunday.',
+      example: {
+        month: 12,
+        date: 25,
+        year: 2015
+      },
       required: true
     },
 
     time: {
-      example: '14:00:00:000',
+      description: 'Structured information representing an exact time (timezone-agnostic)',
+      extendedDescription: '`hour` (0-23), `minute` (0-59), `second` (0-59), and `millisecond` (0-999) are all 0-indexed.',
+      example: {
+        hour: 14,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+      },
       required: true
     },
 
     timezone: {
+      description: 'A human-readable timezone name.',
       example: 'America/Chicago',
       required: true
     }
@@ -35,22 +49,62 @@ module.exports = {
 
   exits: {
 
+    unknownTimezone: {
+      friendlyName: 'invalid timezone',
+      description: 'Unrecognized timezone.'
+    },
+
+    invalidDatetime: {
+      friendlyName: 'invalid date/time',
+      description: 'Could not build a date/time from the provided information.',
+    },
+
     success: {
       variableName: 'timestamp',
       description: 'Done.',
       example: 1430856000000
-    },
+    }
 
   },
 
 
   fn: function (inputs,exits) {
 
-    var moment = require('moment');
+    var _ = require('lodash');
+    var MomentTz = require('moment-timezone');
 
-    inputs.date
+    // Validate this is a known timezone
+    // (case-insensitive)
+    var foundTimezone = _.find(MomentTz.tz.names(), function (timezoneName){
+      if (inputs.timezone.toLowerCase().match(timezoneName.toLowerCase())) {
+        return timezoneName;
+      }
+    });
+    if (!foundTimezone) {
+      return exits.unknownTimezone();
+    }
 
-    return exits.success();
+
+    // Build moment date using appropriate timezone
+    var momentObj = MomentTz.tz({
+      hour: inputs.time.hour,
+      minute: inputs.time.minute,
+      second: inputs.time.second,
+      millisecond: inputs.time.millisecond,
+      day: inputs.date.date,
+      month: inputs.date.month-1,
+      year: inputs.date.year
+    }, foundTimezone);
+
+    if (!momentObj.isValid()) {
+      return exits.invalidDatetime();
+    }
+
+    // Extract the absolute JS timestamp
+    // (# of milliseconds since Jan 1, 1970 at midnight, GMT)
+    var jsTimestamp = momentObj.valueOf();
+
+    return exits.success(jsTimestamp);
   },
 
 
@@ -150,3 +204,18 @@ module.exports = {
 //     // To parse from non-JS Unix timestamp (e.g. seconds rather than ms), use =>
 //     // Moment.unix(numSecondsSinceEpoch);
 //   }
+
+
+
+
+
+
+    // Build moment date UTC-style (as if it was using the UTC timezone)
+    // var momentObj = MomentTz.utc({
+    //   hour: 14,
+    //   minute: 30,
+    //   second: 0,
+    //   day: 25,
+    //   month: 11,
+    //   year: 2015
+    // });
