@@ -4,7 +4,7 @@ module.exports = {
   friendlyName: 'Stringify timestamp',
 
 
-  description: 'Convert a timestamp into conventional JSON date/time format (ISO 8601)',
+  description: 'Convert a timestamp into conventional JSON date/time/zone format (ISO 8601)',
 
 
   extendedDescription: 'If no timestamp is provided, the current date and time will be used.',
@@ -32,7 +32,7 @@ module.exports = {
   exits: {
 
     success: {
-      description: 'Returns JSON-formatted (ISO 8601) date/time.',
+      description: 'Returns JSON-formatted (ISO 8601) date/time/zone.',
       example: '2011-10-16 16:17:56 +00:00'
     },
 
@@ -42,8 +42,8 @@ module.exports = {
     },
 
     invalidDatetime: {
-      friendlyName: 'invalid date/time',
-      description: 'Could not build a date/time from the provided timestamp.',
+      friendlyName: 'invalid date/time/zone',
+      description: 'Could not build a date/time/zone from the provided timestamp.',
     }
 
   },
@@ -54,7 +54,7 @@ module.exports = {
     var _ = require('lodash');
     var MomentTz = require('moment-timezone');
 
-    // Default to current date/time if no timestamp was provided.
+    // Default to current date/time/zone if no timestamp was provided.
     inputs.timestamp = _.isUndefined(inputs.timestamp) ? (new Date()).getTime() : inputs.timestamp;
 
     // Validate this is a known timezone

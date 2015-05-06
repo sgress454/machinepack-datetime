@@ -33,7 +33,8 @@
       "timestamp",
       "parse-date",
       "parse-time",
-      "stringify"
+      "stringify",
+      "parse"
     ],
     "testsUrl": "https://travis-ci.org/sgress454/machinepack-datetime"
   },
