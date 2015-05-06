@@ -78,6 +78,18 @@
         "year": "2012",
         "dayOfWeek": "Thursday"
       }
+    },
+    {
+      "using": {
+        "monthDayYear": "1-1-2001"
+      },
+      "outcome": "success",
+      "returns": {
+        "month": "1",
+        "date": "1",
+        "year": "2001",
+        "dayOfWeek": "Monday"
+      }
     }
   ]
 }
