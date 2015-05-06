@@ -1,5 +1,5 @@
 {
-  "machine": "format",
+  "machine": "stringify",
   "expectations": [
     {
       "using": {

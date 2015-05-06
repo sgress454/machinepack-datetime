@@ -1,10 +1,10 @@
 module.exports = {
 
 
-  friendlyName: 'Format timestamp',
+  friendlyName: 'Stringify timestamp',
 
 
-  description: 'Build a date/time string from a JS timestamp (milliseconds).',
+  description: 'Convert a timestamp into conventional JSON date/time format (ISO 8601)',
 
 
   extendedDescription: 'If no timestamp is provided, the current date and time will be used.',
