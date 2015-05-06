@@ -16,6 +16,14 @@
       },
       "outcome": "success",
       "returns": "2014-12-25T21:30:00+01:00"
+    },
+    {
+      "using": {
+        "timestamp": "1419514200000",
+        "timezone": "Europe/Berlin"
+      },
+      "outcome": "success",
+      "returns": "2014-12-25T14:30:00+01:00"
     }
   ]
 }
