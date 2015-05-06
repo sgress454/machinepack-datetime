@@ -20,12 +20,6 @@ module.exports = {
       description: 'The JSON-formatted (ISO 8601) date/time',
       example: '2015-05-06T00:49:45.767Z',
       required: true
-    },
-
-    timezone: {
-      description: 'A human-readable timezone name.',
-      example: 'America/Chicago',
-      required: true
     }
 
   },
@@ -36,11 +30,6 @@ module.exports = {
     invalidDatetime: {
       friendlyName: 'invalid date/time',
       description: 'Could not build a date/time from the provided information.',
-    },
-
-    unknownTimezone: {
-      friendlyName: 'invalid timezone',
-      description: 'Unrecognized timezone.'
     },
 
     success: {
@@ -54,22 +43,11 @@ module.exports = {
 
   fn: function (inputs,exits) {
 
-    var _ = require('lodash');
     var MomentTz = require('moment-timezone');
 
-    // Validate this is a known timezone
-    // (case-insensitive)
-    var foundTimezone = _.find(MomentTz.tz.names(), function (timezoneName){
-      if (inputs.timezone.toLowerCase().match(timezoneName.toLowerCase())) {
-        return timezoneName;
-      }
-    });
-    if (!foundTimezone) {
-      return exits.unknownTimezone();
-    }
-
-    // Build moment date using appropriate timezone in order to check validity
-    var momentObj = MomentTz.tz(Date.parse(inputs.datetime), foundTimezone);
+    // Build moment date using GMT in order to check validity
+    // (JSON-stringified datetimes are always encoded using the GMT timezone)
+    var momentObj = MomentTz.tz(Date.parse(inputs.datetime), 'Etc/Greenwich');
     if (!momentObj.isValid()) {
       return exits.invalidDatetime();
     }
