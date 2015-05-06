@@ -30,10 +30,10 @@
     "friendlyName": "Datetime",
     "machineDir": "machines/",
     "machines": [
-      "format",
       "timestamp",
       "parse-date",
-      "parse-time"
+      "parse-time",
+      "format"
     ],
     "testsUrl": "https://travis-ci.org/sgress454/machinepack-datetime"
   },

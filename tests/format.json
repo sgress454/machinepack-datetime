@@ -3,67 +3,19 @@
   "expectations": [
     {
       "using": {
-        "timestamp": "1318781876000"
+        "timestamp": "1419539400000",
+        "timezone": "America/Chicago"
       },
       "outcome": "success",
-      "returns": "2011-10-16 16:17:56 +00:00"
+      "returns": "2014-12-25T14:30:00-06:00"
     },
     {
       "using": {
-        "timestamp": "1318781876000",
-        "format": "YYYY"
+        "timestamp": "1419539400000",
+        "timezone": "Europe/Berlin"
       },
       "outcome": "success",
-      "returns": "2011"
-    },
-    {
-      "using": {
-        "timestamp": "1318781876000",
-        "format": "YYYY-MM-DD"
-      },
-      "outcome": "success",
-      "returns": "2011-10-16"
-    },
-    {
-      "using": {
-        "timestamp": "1318781876000",
-        "format": "YYYY-MM-DD Z"
-      },
-      "outcome": "success",
-      "returns": "2011-10-16 +00:00"
-    },
-    {
-      "using": {
-        "timestamp": "1318781876000",
-        "timezoneOffset": "0"
-      },
-      "outcome": "success",
-      "returns": "2011-10-16 16:17:56 +00:00"
-    },
-    {
-      "using": {
-        "timestamp": "1318781876000",
-        "timezoneOffset": "-6"
-      },
-      "outcome": "success",
-      "returns": "2011-10-16 10:17:56 -06:00"
-    },
-    {
-      "using": {
-        "timestamp": "1430795727386",
-        "timezoneOffset": "-6"
-      },
-      "outcome": "success",
-      "returns": "2015-05-04 21:15:27 -06:00"
-    },
-    {
-      "using": {
-        "timestamp": "1430795727386",
-        "format": "HH:mm:ss",
-        "timezoneOffset": "-6"
-      },
-      "outcome": "success",
-      "returns": "21:15:27"
+      "returns": "2014-12-25T21:30:00+01:00"
     }
   ]
 }

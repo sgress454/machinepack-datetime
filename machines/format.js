@@ -1,10 +1,10 @@
 module.exports = {
 
 
-  friendlyName: 'Format date/time',
+  friendlyName: 'Format timestamp',
 
 
-  description: 'Build a date/time string from a Unix timestamp (milliseconds).',
+  description: 'Build a date/time string from a JS timestamp (milliseconds).',
 
 
   extendedDescription: 'If no timestamp is provided, the current date and time will be used.',
@@ -20,20 +20,10 @@ module.exports = {
       example: 1318781876000,
     },
 
-    format: {
-      friendlyName: 'Desired format',
-      description: 'A format string that will be used to format the date',
-      extendedDescription: 'YYYY represents the year, "MM" the month (0-11), "DD" the date (0-indexed), "HH" the hour (0-23), "mm" the minute (0-59), "ss" the second (0-59), and "Z" the timezone difference from GMT/UTC.',
-      example: 'YYYY-MM-DD HH:mm:ss Z',
-      defaultsTo: 'YYYY-MM-DD HH:mm:ss Z'
-    },
-
-    timezoneOffset: {
-      friendlyName: 'Timezone offset',
-      description: 'The timezone offset from UTC/GMT (in hours)',
-      extendedDescription: 'By default, the formatted date/time string returned will use the UTC/GMT timezone.',
-      example: -6,
-      defaultsTo: 0
+    timezone: {
+      description: 'A human-readable timezone name.',
+      example: 'America/Chicago',
+      required: true
     }
 
   },
@@ -46,29 +36,48 @@ module.exports = {
       example: '2011-10-16 16:17:56 +00:00'
     },
 
-    invalidTimestamp: {
-      friendlyName: 'Invalid timestamp'
+    unknownTimezone: {
+      friendlyName: 'invalid timezone',
+      description: 'Unrecognized timezone.'
+    },
+
+    invalidDatetime: {
+      friendlyName: 'invalid date/time',
+      description: 'Could not build a date/time from the provided timestamp.',
     }
 
   },
 
 
   fn: function (inputs,exits) {
-    var Moment = require('moment');
 
-    // Default to current date/time
-    if (typeof inputs.timestamp === 'undefined') {
-      return exits.success(Moment.utc().zone(-1*inputs.timezoneOffset).format(inputs.format));
+    var _ = require('lodash');
+    var MomentTz = require('moment-timezone');
+
+    // Default to current date/time if no timestamp was provided.
+    inputs.timestamp = _.isUndefined(inputs.timestamp) ? (new Date()).getTime() : inputs.timestamp;
+
+    // Validate this is a known timezone
+    // (case-insensitive)
+    var foundTimezone = _.find(MomentTz.tz.names(), function (timezoneName){
+      if (inputs.timezone.toLowerCase().match(timezoneName.toLowerCase())) {
+        return timezoneName;
+      }
+    });
+    if (!foundTimezone) {
+      return exits.unknownTimezone();
     }
 
-    // Or use the specified timestamp
-    var dateObj = Moment.utc(inputs.timestamp);
-    if (!dateObj.isValid()) {
-      return exits.invalidTimestamp();
+    // Build moment date using appropriate timezone
+    var momentObj = MomentTz.tz(inputs.timestamp, foundTimezone);
+    if (!momentObj.isValid()) {
+      return exits.invalidDatetime();
     }
-    return exits.success(dateObj.zone(-1*inputs.timezoneOffset).format(inputs.format));
+
+    // Format date
+    var resultStr = momentObj.format();
+    return exits.success(resultStr);
   }
-
 
 
 };
