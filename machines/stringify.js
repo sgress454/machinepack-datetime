@@ -32,7 +32,7 @@ module.exports = {
   exits: {
 
     success: {
-      description: 'Returns formatted date/time string (GMT/UTC timezone)',
+      description: 'Returns JSON-formatted (ISO 8601) date/time.',
       example: '2011-10-16 16:17:56 +00:00'
     },
 

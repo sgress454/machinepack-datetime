@@ -87,7 +87,7 @@ module.exports = {
 
     success: {
       variableName: 'timestamp',
-      description: 'Done.',
+      description: 'Returns JS timestamp (milliseconds since midnight on Jan 1, 1970 GMT)',
       example: 1430856000000
     }
 
