@@ -19,6 +19,15 @@
     {
       "using": {
         "timestamp": "1430873614650",
+        "timezone": "America/Chicago",
+        "formatString": "YYMMDD Hms ZZ"
+      },
+      "outcome": "success",
+      "returns": "150505 195334 -0500"
+    },
+    {
+      "using": {
+        "timestamp": "1430873614650",
         "timezone": "Europe/Berlin"
       },
       "outcome": "success",

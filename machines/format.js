@@ -21,8 +21,19 @@ module.exports = {
       description: 'A human-readable timezone name.',
       example: 'America/Chicago',
       required: true
-    }
+    },
 
+    formatString: {
+      friendlyName: 'Format',
+      description: 'A format string that will be used to format the date',
+      extendedDescription: 'YYYY represents the year, "MM" the month (0-11), "DD" the date (0-indexed), "HH" the hour (0-23), "mm" the minute (0-59), "ss" the second (0-59), and "Z" the timezone difference from GMT/UTC.',
+      whereToGet: {
+        url: 'http://momentjs.com/docs/#/displaying/format',
+        description: 'Full reference for date/time formatting options',
+      },
+      example: 'YYYY-MM-DD HH:mm:ss Z',
+      defaultsTo: 'YYYY-MM-DD HH:mm:ss Z'
+    }
   },
 
 
@@ -72,7 +83,8 @@ module.exports = {
     }
 
     // Format date
-    var resultStr = momentObj.format();
+    var formatString = inputs.formatString || 'YYYY-MM-DD HH:mm:ss Z';
+    var resultStr = momentObj.format(formatString);
     return exits.success(resultStr);
   }
 
