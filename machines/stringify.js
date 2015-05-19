@@ -1,7 +1,7 @@
 module.exports = {
 
 
-  friendlyName: 'Stringify timestamp (to JSON)',
+  friendlyName: 'Stringify JS timestamp',
 
 
   description: 'Convert a timestamp into conventional JSON date/time format (ISO 8601)',

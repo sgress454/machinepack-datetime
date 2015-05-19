@@ -1,7 +1,7 @@
 module.exports = {
 
 
-  friendlyName: 'Parse time',
+  friendlyName: 'Parse time string',
 
 
   description: 'Parse a string containing a human-readable time.',

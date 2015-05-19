@@ -1,10 +1,10 @@
 module.exports = {
 
 
-  friendlyName: 'Parse JSON timestamp',
+  friendlyName: 'Parse JSON date/time',
 
 
-  description: 'Parse JSON-formatted (ISO 8601) date/time into a JS timestamp.',
+  description: 'Parse JSON-formatted (ISO 8601) date/time into a JS timestamp (epoch ms).',
 
 
   sync: true,

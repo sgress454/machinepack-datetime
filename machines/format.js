@@ -1,10 +1,10 @@
 module.exports = {
 
 
-  friendlyName: 'Format timestamp',
+  friendlyName: 'Format JS timestamp',
 
 
-  description: 'Convert a timestamp and timezone into a human readable date/time.',
+  description: 'Convert a JS timestamp and timezone into a human readable date/time.',
 
 
   inputs: {

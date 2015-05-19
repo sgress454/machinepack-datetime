@@ -1,7 +1,7 @@
 module.exports = {
 
 
-  friendlyName: 'Parse date',
+  friendlyName: 'Parse date string',
 
 
   description: 'Parse a string containing a human-readable date.',

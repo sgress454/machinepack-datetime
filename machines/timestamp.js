@@ -1,7 +1,7 @@
 module.exports = {
 
 
-  friendlyName: 'Construct timestamp',
+  friendlyName: 'Construct JS timestamp',
 
 
   description: 'Construct an absolute timestamp from date/time/timezone data.',
