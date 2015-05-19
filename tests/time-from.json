@@ -8,6 +8,14 @@
       },
       "outcome": "success",
       "returns": "2 minutes ago"
+    },
+    {
+      "using": {
+        "toWhen": "1432056597871",
+        "fromWhen": "1432056491087"
+      },
+      "outcome": "success",
+      "returns": "in 2 minutes"
     }
   ]
 }
