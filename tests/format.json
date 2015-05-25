@@ -14,7 +14,7 @@
         "timezone": "America/Chicago"
       },
       "outcome": "success",
-      "returns": "2015-05-05T19:53:34-05:00"
+      "returns": "2015-05-05 19:53:34 -05:00"
     },
     {
       "using": {
@@ -31,7 +31,7 @@
         "timezone": "Europe/Berlin"
       },
       "outcome": "success",
-      "returns": "2015-05-06T02:53:34+02:00"
+      "returns": "2015-05-06 02:53:34 +02:00"
     }
   ]
 }

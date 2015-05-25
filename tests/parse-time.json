@@ -7,10 +7,10 @@
       },
       "outcome": "success",
       "returns": {
-        "hour": "2",
-        "minute": "30",
-        "second": "0",
-        "millisecond": "500"
+        "hour": 2,
+        "minute": 30,
+        "second": 0,
+        "millisecond": 500
       }
     },
     {
@@ -19,10 +19,10 @@
       },
       "outcome": "success",
       "returns": {
-        "hour": "14",
-        "minute": "30",
-        "second": "0",
-        "millisecond": "500"
+        "hour": 14,
+        "minute": 30,
+        "second": 0,
+        "millisecond": 500
       }
     },
     {
@@ -31,10 +31,10 @@
       },
       "outcome": "success",
       "returns": {
-        "hour": "16",
-        "minute": "45",
-        "second": "0",
-        "millisecond": "0"
+        "hour": 16,
+        "minute": 45,
+        "second": 0,
+        "millisecond": 0
       }
     },
     {
@@ -43,10 +43,10 @@
       },
       "outcome": "success",
       "returns": {
-        "hour": "4",
-        "minute": "45",
-        "second": "0",
-        "millisecond": "0"
+        "hour": 4,
+        "minute": 45,
+        "second": 0,
+        "millisecond": 0
       }
     },
     {
@@ -55,10 +55,10 @@
       },
       "outcome": "success",
       "returns": {
-        "hour": "4",
-        "minute": "45",
-        "second": "0",
-        "millisecond": "0"
+        "hour": 4,
+        "minute": 45,
+        "second": 0,
+        "millisecond": 0
       }
     }
   ]

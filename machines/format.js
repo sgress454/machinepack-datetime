@@ -83,8 +83,7 @@ module.exports = {
     }
 
     // Format date
-    var formatString = inputs.formatString || 'YYYY-MM-DD HH:mm:ss Z';
-    var resultStr = momentObj.format(formatString);
+    var resultStr = momentObj.format(inputs.formatString);
     return exits.success(resultStr);
   }
 
