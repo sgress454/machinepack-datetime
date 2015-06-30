@@ -11,7 +11,7 @@
         "timezone": "America/Chicago"
       },
       "outcome": "success",
-      "returns": "1419539400000"
+      "returns": 1419539400000
     },
     {
       "using": {
@@ -23,7 +23,7 @@
         "timezone": "Europe/Berlin"
       },
       "outcome": "success",
-      "returns": "1419514200000"
+      "returns": 1419514200000
     }
   ]
 }
