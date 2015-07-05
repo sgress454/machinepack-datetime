@@ -4,7 +4,7 @@ module.exports = {
   friendlyName: 'Now',
 
 
-  description: 'Construct a new timestamp from the current time.',
+  description: 'Construct a new JS timestamp from the current time.',
 
 
   sync: true,
