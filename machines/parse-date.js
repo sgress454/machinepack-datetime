@@ -30,7 +30,7 @@ module.exports = {
     success: {
       variableName: 'date',
       description: 'Returns structured information about the date.',
-      extendedDescription: '`date` is 1-indexed, `month` is 1-indexed, and `dayOfWeek` is 1-indexed starting with Sunday.',
+      extendedDescription: '`year` is the full calendar year, `date` is 1-indexed, `month` is 1-indexed, and `dayOfWeek` is a string like "Sunday".',
       example: {
         month: 12,
         date: 25,
