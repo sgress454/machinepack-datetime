@@ -10,12 +10,6 @@ module.exports = {
   sync: true,
 
 
-  inputs: {
-
-
-  },
-
-
   exits: {
 
     success: {
@@ -29,7 +23,6 @@ module.exports = {
 
 
   fn: function (inputs,exits) {
-
     return exits.success((new Date()).getTime());
   }
 
