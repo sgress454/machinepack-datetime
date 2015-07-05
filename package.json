@@ -1,6 +1,6 @@
 {
   "name": "machinepack-datetime",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Work the dates and times.",
   "scripts": {
     "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
