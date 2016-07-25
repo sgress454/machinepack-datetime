@@ -4,7 +4,7 @@ module.exports = {
   friendlyName: 'Construct JS timestamp',
 
 
-  description: 'Construct an absolute timestamp from date/time/timezone data.',
+  description: 'Construct an absolute timestamp from structured date/time/timezone data.',
 
 
   sync: true,

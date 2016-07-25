@@ -1,6 +1,6 @@
 {
   "name": "machinepack-datetime",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "description": "Work the dates and times.",
   "scripts": {
     "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
@@ -18,13 +18,13 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^3.8.0",
-    "machine": "^9.0.3",
+    "machine": "^10.3.1",
     "moment": "^2.9.0",
     "moment-timezone": "^0.3.1"
   },
   "devDependencies": {
     "mocha": "^2.1.0",
-    "test-machinepack-mocha": "^1.0.0"
+    "test-machinepack-mocha": "^2.1.1"
   },
   "machinepack": {
     "friendlyName": "Datetime",
@@ -37,7 +37,8 @@
       "parse",
       "format",
       "time-from",
-      "now"
+      "now",
+      "parse-timestamp"
     ],
     "testsUrl": "https://travis-ci.org/sgress454/machinepack-datetime"
   },

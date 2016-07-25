@@ -28,7 +28,7 @@ module.exports = {
   exits: {
 
     success: {
-      extendedDescription: '`date` is 1-indexed, `month` is 1-indexed, and `dayOfWeek` is 1-indexed starting with Sunday.',
+      extendedDescription: '`year` is the full calendar year, `date` is 1-indexed, `month` is 1-indexed, and `dayOfWeek` is a string like "Sunday".',
       outputExample: {
         month: 12,
         date: 25,
