@@ -4,7 +4,7 @@ module.exports = {
   friendlyName: 'Stringify JS timestamp',
 
 
-  description: 'Convert a timestamp into conventional JSON date/time format (ISO 8601)',
+  description: 'Convert a timestamp into conventional JSON date/time format (ISO 8601).',
 
 
   extendedDescription: 'If no timestamp is provided, the current date and time will be used.',
@@ -13,8 +13,7 @@ module.exports = {
   inputs: {
 
     timestamp: {
-      friendlyName: 'Timestamp',
-      description: 'An epoch offset (in milliseconds)',
+      description: 'An epoch offset (in milliseconds).',
       moreInfoUrl: 'http://momentjs.com/docs/#/parsing/unix-offset/',
       extendedDescription: 'The number of milliseconds since midnight (GMT/UTC) on January 1, 1970.',
       example: 1318781876000,
@@ -26,12 +25,13 @@ module.exports = {
   exits: {
 
     success: {
-      description: 'Returns JSON-formatted (ISO 8601) date/time/zone.',
-      example: '2015-05-06T00:53:34.650Z'
+      outputExample: '2015-05-06T00:53:34.650Z',
+      outputFriendlyName: 'Date string',
+      outputDescription: 'A string representing the given timestamp.'
     },
 
     invalidDatetime: {
-      friendlyName: 'invalid date/time/zone',
+      friendlyName: 'Invalid date/time/zone',
       description: 'Could not build a date/time/zone from the provided timestamp.',
     }
 

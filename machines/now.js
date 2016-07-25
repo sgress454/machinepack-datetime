@@ -19,10 +19,11 @@ module.exports = {
   exits: {
 
     success: {
-      description: 'Returns the current time as a JS timestamp (an epoch offset in milliseconds)',
       moreInfoUrl: 'http://momentjs.com/docs/#/parsing/unix-offset/',
       extendedDescription: 'The number of milliseconds since midnight (GMT/UTC) on January 1, 1970.',
-      example: 1318781876000,
+      outputExample: 1318781876000,
+      outputFriendlyName: 'Current timestamp',
+      outputDescription: 'A Javascript timestamp representing the current time.'
     }
 
   },

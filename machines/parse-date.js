@@ -7,7 +7,7 @@ module.exports = {
   description: 'Parse a string containing a human-readable date.',
 
 
-  cacheable: true,
+  sideEffects: 'cacheable',
 
 
   sync: true,
@@ -28,19 +28,18 @@ module.exports = {
   exits: {
 
     success: {
-      variableName: 'date',
-      description: 'Returns structured information about the date.',
       extendedDescription: '`date` is 1-indexed, `month` is 1-indexed, and `dayOfWeek` is 1-indexed starting with Sunday.',
-      example: {
+      outputExample: {
         month: 12,
         date: 25,
         year: 2015,
         dayOfWeek: 'Monday',
-      }
+      },
+      outputFriendlyName: 'Parsed date',
+      outputDescription: 'A dictionary containing information about the specified date.'
     },
 
     couldNotParse: {
-      friendlyName: 'could not parse',
       description: 'Could not parse a date from the provided string.',
     }
 

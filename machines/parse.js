@@ -10,14 +10,14 @@ module.exports = {
   sync: true,
 
 
-  cacheable: true,
+  sideEffects: 'cacheable',
 
 
   inputs: {
 
     datetime: {
       friendlyName: 'JSON date',
-      description: 'The JSON-formatted (ISO 8601) date/time',
+      description: 'The JSON-formatted (ISO 8601) date/time.',
       example: '2015-05-06T00:49:45.767Z',
       required: true
     }
@@ -27,16 +27,17 @@ module.exports = {
 
   exits: {
 
-    invalidDatetime: {
-      friendlyName: 'invalid date/time',
-      description: 'Could not build a date/time from the provided information.',
+    success: {
+      outputExample: 1430856000000,
+      outputFriendlyName: 'Timestamp',
+      outputDescription: 'A Javascript timestamp representing the specified date and time.'
     },
 
-    success: {
-      variableName: 'timestamp',
-      description: 'Returns JS timestamp (milliseconds since midnight on Jan 1, 1970 GMT)',
-      example: 1430856000000
-    }
+
+    invalidDatetime: {
+      friendlyName: 'Invalid date/time',
+      description: 'Could not build a date/time from the provided information.',
+    },
 
   },
 

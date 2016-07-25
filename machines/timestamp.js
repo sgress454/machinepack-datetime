@@ -10,56 +10,50 @@ module.exports = {
   sync: true,
 
 
-  cacheable: true,
+  sideEffects: 'cacheable',
 
 
   inputs: {
 
     year: {
-      friendlyName: 'Year',
       description: 'The four-digit year.',
       example: 2015,
       required: true
     },
 
     month: {
-      friendlyName: 'Month',
-      description: 'The month (numeric, 1-12)',
+      description: 'The month (numeric, 1-12).',
       example: 12,
       required: true
     },
 
     date: {
       friendlyName: 'Day',
-      description: 'The day of the month (1-31)',
+      description: 'The day of the month (1-31).',
       example: 25,
       required: true
     },
 
     hour: {
-      friendlyName: 'Hour',
-      description: 'The hour of the day (0-23)',
+      description: 'The hour of the day (0-23).',
       example: 14,
       required: true
     },
 
     minute: {
-      friendlyName: 'Minute',
-      description: 'The minute of the day (0-59)',
+      description: 'The minute of the day (0-59).',
       example: 30,
       required: true
     },
 
     second: {
-      friendlyName: 'Second',
-      description: 'The second within the minute (0-59)',
+      description: 'The second within the minute (0-59).',
       example: 1,
       defaultsTo: 0
     },
 
     millisecond: {
-      friendlyName: 'Millisecond',
-      description: 'The precise millisecond within the second (0-999)',
+      description: 'The precise millisecond within the second (0-999).',
       example: 1,
       defaultsTo: 0
     },
@@ -75,21 +69,21 @@ module.exports = {
 
   exits: {
 
+    success: {
+      outputFriendlyName: 'Timestamp',
+      outputDescription: 'A JS timestamp (milliseconds since midnight on Jan 1, 1970 GMT).',
+      outputExample: 1430856000000
+    },
+
     unknownTimezone: {
-      friendlyName: 'invalid timezone',
+      friendlyName: 'Invalid timezone',
       description: 'Unrecognized timezone.'
     },
 
     invalidDatetime: {
-      friendlyName: 'invalid date/time',
+      friendlyName: 'Invalid date/time',
       description: 'Could not build a date/time from the provided information.',
     },
-
-    success: {
-      variableName: 'timestamp',
-      description: 'Returns JS timestamp (milliseconds since midnight on Jan 1, 1970 GMT)',
-      example: 1430856000000
-    }
 
   },
 

@@ -4,10 +4,10 @@ module.exports = {
   friendlyName: 'Time from...',
 
 
-  description: 'Format a human-readable a JS timestamp (epoch ms) and timezone into a human-readable "time from" format (e.g. "6 minutes ago")',
+  description: 'Format a human-readable a JS timestamp (epoch ms) and timezone into a human-readable "time from" format (e.g. "6 minutes ago").',
 
 
-  cacheable: true,
+  sideEffects: 'cacheable',
 
 
   sync: true,
@@ -17,7 +17,7 @@ module.exports = {
 
     toWhen: {
       friendlyName: 'To...',
-      description: 'An epoch offset (in milliseconds)',
+      description: 'An epoch offset (in milliseconds).',
       moreInfoUrl: 'http://momentjs.com/docs/#/parsing/unix-offset/',
       example: 1318781876000,
       required: true
@@ -36,20 +36,20 @@ module.exports = {
 
   exits: {
 
+    success: {
+      outputFriendlyName: 'Time from',
+      outputDescription: 'A human-readable description of the amount of time elapsed between the given timestamps.',
+      outputExample: '6 seconds ago',
+    },
+
     invalidToWhen: {
-      friendlyName: 'invalid "to"',
+      friendlyName: 'Invalid "to"',
       description: 'Could not build a date/time/zone from the provided "To..." timestamp.',
     },
 
     invalidFromWhen: {
-      friendlyName: 'invalid "from"',
+      friendlyName: 'Invalid "from"',
       description: 'Could not build a date/time/zone from the provided "From..." timestamp.',
-    },
-
-    success: {
-      variableName: 'timeFromStr',
-      example: '6 seconds ago',
-      description: 'Done.'
     },
 
   },

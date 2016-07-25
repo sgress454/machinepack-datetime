@@ -7,7 +7,7 @@ module.exports = {
   description: 'Parse a string containing a human-readable time.',
 
 
-  cacheable: true,
+  sideEffects: 'cacheable',
 
 
   sync: true,
@@ -16,7 +16,6 @@ module.exports = {
   inputs: {
 
     timeString: {
-      friendlyName: 'Time string',
       description: 'A string containing a human-readable time (but not a date or timezone).',
       example: '2:30 PM',
       required: true
@@ -28,19 +27,18 @@ module.exports = {
   exits: {
 
     success: {
-      variableName: 'time',
-      description: 'Returns structured information about the time.',
       extendedDescription: '`hour` (0-23), `minute` (0-59), `second` (0-59), and `millisecond` (0-999) are all 0-indexed.',
-      example: {
+      outputExample: {
         hour: 14,
         minute: 30,
         second: 0,
         millisecond: 0
-      }
+      },
+      outputFriendlyName: 'Parsed time',
+      outputDescription: 'A dictionary containing information about the specified time.'
     },
 
     couldNotParse: {
-      friendlyName: 'could not parse',
       description: 'Could not parse a time from the provided string.',
     }
 
