@@ -7,7 +7,7 @@ module.exports = {
   description: 'Expand a JS timestamp into a dictionary of date/time information.',
 
 
-  cacheable: true,
+  sideEffects: 'cacheable',
 
 
   sync: true,
@@ -17,7 +17,7 @@ module.exports = {
 
     timestamp: {
       friendlyName: 'Timestamp (JS)',
-      description: 'An epoch offset (in milliseconds)',
+      description: 'An epoch offset (in milliseconds).',
       moreInfoUrl: 'http://momentjs.com/docs/#/parsing/unix-offset/',
       extendedDescription: 'The number of milliseconds since midnight (GMT/UTC) on January 1, 1970.',
       example: 1318781876000,
@@ -37,10 +37,10 @@ module.exports = {
   exits: {
 
     success: {
-      variableName: 'timestampInfo',
-      description: 'Returns structured information about the date and time.',
+      outputFriendlyName: 'Parsed timestamp',
+      outputDescription: 'A dictionary containing information about the specified timestamp.',
       extendedDescription: '`year` is the full calendar year, `date` is 1-indexed, `month` is 1-indexed, and `dayOfWeek` is a string like "Sunday".  `hour` (0-23), `minute` (0-59), `second` (0-59), and `millisecond` (0-999) are all 0-indexed.',
-      example: {
+      outputExample: {
         month: 12,
         date: 25,
         year: 2015,
@@ -54,12 +54,11 @@ module.exports = {
     },
 
     unknownTimezone: {
-      friendlyName: 'invalid timezone',
+      friendlyName: 'Invalid timezone',
       description: 'Unrecognized timezone.'
     },
 
     couldNotParse: {
-      friendlyName: 'could not parse',
       description: 'Could not build a valid date/time from the provided timestamp + timezone combination.',
     },
 
