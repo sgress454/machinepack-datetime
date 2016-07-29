@@ -55,7 +55,7 @@ module.exports = {
 
     unknownTimezone: {
       friendlyName: 'Invalid timezone',
-      description: 'Unrecognized timezone.'
+      description: 'The provided timezone was not recognized.'
     },
 
     couldNotParse: {
@@ -67,27 +67,33 @@ module.exports = {
 
   fn: function (inputs,exits) {
 
+    // Import `lodash` and `moment-timezone`.
     var _ = require('lodash');
     var MomentTz = require('moment-timezone');
 
-    // Validate this is a known timezone
-    // (case-insensitive)
+    // Try to find a known timezone matching the `timezone` input (case-insensitive).
     var foundTimezone = _.find(MomentTz.tz.names(), function (timezoneName){
       if (inputs.timezone.toLowerCase().match(timezoneName.toLowerCase())) {
         return timezoneName;
       }
     });
+
+    // If none is found, leave through the `unknownTimezone` exit.
     if (!foundTimezone) {
       return exits.unknownTimezone();
     }
 
-
-    // Build moment date using appropriate timezone
+    // Build Moment object using appropriate timezone.
     var momentObj = MomentTz.tz(inputs.timestamp, foundTimezone);
+
+    // If a valid Moment object could not be created, leave through
+    // the `couldNotParse` exit.
     if (!momentObj.isValid()) {
       return exits.couldNotParse();
     }
 
+    // Build a dictionary of information about the date and time, and
+    // output it through the `success` exit.
     return exits.success({
       month: momentObj.month()+1,
       date: momentObj.date(),

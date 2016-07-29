@@ -77,7 +77,7 @@ module.exports = {
 
     unknownTimezone: {
       friendlyName: 'Invalid timezone',
-      description: 'Unrecognized timezone.'
+      description: 'The specified timezone was not recognized.'
     },
 
     invalidDatetime: {
@@ -93,19 +93,19 @@ module.exports = {
     var _ = require('lodash');
     var MomentTz = require('moment-timezone');
 
-    // Validate this is a known timezone
-    // (case-insensitive)
+    // Try to find a known timezone matching the `timezone` input (case-insensitive).
     var foundTimezone = _.find(MomentTz.tz.names(), function (timezoneName){
       if (inputs.timezone.toLowerCase().match(timezoneName.toLowerCase())) {
         return timezoneName;
       }
     });
+
+    // If none is found, leave through the `unknownTimezone` exit.
     if (!foundTimezone) {
       return exits.unknownTimezone();
     }
 
-
-    // Build moment date using appropriate timezone
+    // Build Moment date object using appropriate timezone.
     var momentObj = MomentTz.tz({
       hour: inputs.hour,
       minute: inputs.minute,
@@ -116,14 +116,16 @@ module.exports = {
       year: inputs.year
     }, foundTimezone);
 
+    // If no valid date could be constructed, leave through the `invalidDatetime` exit.
     if (!momentObj.isValid()) {
       return exits.invalidDatetime();
     }
 
-    // Extract the absolute JS timestamp
-    // (# of milliseconds since Jan 1, 1970 at midnight, GMT)
+    // Extract the absolute JS timestamp.
+    // (# of milliseconds since Jan 1, 1970 at midnight, GMT).
     var jsTimestamp = momentObj.valueOf();
 
+    // Return it through the `success` exit.
     return exits.success(jsTimestamp);
   }
 

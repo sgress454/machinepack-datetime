@@ -40,19 +40,24 @@ module.exports = {
 
   fn: function (inputs,exits) {
 
+    // Import `lodash` and `moment-timezone`.
     var _ = require('lodash');
     var MomentTz = require('moment-timezone');
 
     // Default to current date/time/zone if no timestamp was provided.
     inputs.timestamp = _.isUndefined(inputs.timestamp) ? (new Date()).getTime() : inputs.timestamp;
 
-    // Build moment date using appropriate timezone
+    // Build a Moment date object using appropriate timezone.
     var momentObj = MomentTz.tz(inputs.timestamp, 'Etc/Greenwich');
+
+    // If a valid Moment object could not be created, leave through
+    // the `invalidDatetime` exit.
     if (!momentObj.isValid()) {
       return exits.invalidDatetime();
     }
 
-    // Format date
+    // Format and stringify the date as an ISO8601 string, the return it
+    // through the `success` exit.
     var resultStr = momentObj.toDate().toJSON();
     return exits.success(resultStr);
   }

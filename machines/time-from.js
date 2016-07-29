@@ -26,7 +26,7 @@ module.exports = {
     fromWhen: {
       friendlyName: 'From...',
       description: 'Another epoch offset (in milliseconds) to use as a reference when formatting the "time from" string.',
-      extendedDescription: 'Defaults to current date/time',
+      extendedDescription: 'Defaults to current date/time.',
       moreInfoUrl: 'http://momentjs.com/docs/#/parsing/unix-offset/',
       example: 1318781870000
     },
@@ -56,23 +56,31 @@ module.exports = {
 
 
   fn: function (inputs,exits) {
+
+    // Import `moment-timezone`.
     var MomentTz = require('moment-timezone');
 
-    // Build moment obj for `toWhen`
+    // Build Moment object from the `toWhen` input.
     var toWhenObj = MomentTz.tz(new Date(inputs.toWhen), 'Etc/Greenwich');
+
+    // If a valid Moment object could not be created, leave through
+    // the `invalidToWhen` exit.
     if (!toWhenObj.isValid()) {
       return exits.invalidToWhen();
     }
 
-    // Build moment obj for `fromWhen`
-    // (default to current date/time if no `fromWhen` timestamp was provided)
+    // Build Moment object from the `fromWhen` input, defaulting to current
+    // date/time if no `fromWhen` timestamp was provided.
     inputs.fromWhen = (typeof inputs.fromWhen === 'undefined') ? (new Date()).getTime() : inputs.fromWhen;
     var fromWhenObj = MomentTz.tz(new Date(inputs.fromWhen), 'Etc/Greenwich');
+
+    // If a valid Moment object could not be created, leave through
+    // the `invalidFromWhen` exit.
     if (!fromWhenObj.isValid()) {
       return exits.invalidFromWhen();
     }
 
-    // Format final "time from" string
+    // Format final "time from" string and return it through the `success` exit.
     var resultStr = toWhenObj.from(fromWhenObj);
     return exits.success(resultStr);
   },

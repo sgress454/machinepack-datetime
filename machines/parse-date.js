@@ -48,14 +48,19 @@ module.exports = {
 
   fn: function (inputs,exits) {
 
+    // Import `moment`.
     var Moment = require('moment');
 
+    // Attempt to create a new Moment object with the provided `monthDayYear` string.
     var momentObj = Moment(Date.parse(inputs.monthDayYear));
 
+    // If no valid object could be created, leave through the `couldNotParse` exit.
     if (!momentObj.isValid()) {
       return exits.couldNotParse();
     }
 
+    // Construct a dictionary of information about the date and pass it through
+    // the `success` exit.
     return exits.success({
       month: momentObj.month()+1,
       date: momentObj.date(),

@@ -44,19 +44,25 @@ module.exports = {
 
   fn: function (inputs,exits) {
 
+    // Import `moment-timezone`.
     var MomentTz = require('moment-timezone');
 
-    // Build moment date using GMT in order to check validity
-    // (JSON-stringified datetimes are always encoded using the GMT timezone)
+    // Build Moment date object using GMT in order to check validity.
+    // (JSON-stringified datetimes are always encoded using the GMT timezone).
     var momentObj = MomentTz.tz(Date.parse(inputs.datetime), 'Etc/Greenwich');
+
+    // If a valid Moment object could not be created, leave through
+    // the `invalidDatetime` exit.
     if (!momentObj.isValid()) {
       return exits.invalidDatetime();
     }
 
-    // Extract the absolute JS timestamp
-    // (# of milliseconds since Jan 1, 1970 at midnight, GMT)
+    // Extract the absolute JS timestamp (# of milliseconds since
+    // Jan 1, 1970 at midnight, GMT) from the Moment object and return
+    // it through the `success` exit.
     var jsTimestamp = momentObj.valueOf();
     return exits.success(jsTimestamp);
+
   }
 
 

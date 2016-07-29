@@ -24,6 +24,9 @@ module.exports = {
 
 
   fn: function (inputs,exits) {
+
+    // Create a new Javascript Date object, run `.getTime()` to get a JS timestamp
+    // (in milliseconds) and return it through the `success` exit.
     return exits.success((new Date()).getTime());
   }
 
