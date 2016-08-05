@@ -7,13 +7,17 @@ module.exports = {
   description: 'Convert a JS timestamp and timezone into a human readable date/time.',
 
 
+  sideEffects: 'cacheable',
+
+
   inputs: {
 
     timestamp: {
       description: 'An epoch offset (in milliseconds).',
       moreInfoUrl: 'http://momentjs.com/docs/#/parsing/unix-offset/',
       extendedDescription: 'The number of milliseconds since midnight (GMT/UTC) on January 1, 1970.',
-      example: 1318781876000
+      example: 1318781876000,
+      required: true
     },
 
     timezone: {
@@ -62,9 +66,6 @@ module.exports = {
     // Import `lodash` and `moment-timezone`.
     var _ = require('lodash');
     var MomentTz = require('moment-timezone');
-
-    // Default to current date/time/zone if no timestamp was provided.
-    inputs.timestamp = _.isUndefined(inputs.timestamp) ? (new Date()).getTime() : inputs.timestamp;
 
     // Try to find a known timezone matching the `timezone` input (case-insensitive).
     var foundTimezone = _.find(MomentTz.tz.names(), function (timezoneName){
