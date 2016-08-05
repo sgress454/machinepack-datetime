@@ -90,7 +90,10 @@ module.exports = {
 
   fn: function (inputs,exits) {
 
+    // Import `lodash`.
     var _ = require('lodash');
+
+    // Import `moment-timezone`.
     var MomentTz = require('moment-timezone');
 
     // Try to find a known timezone matching the `timezone` input (case-insensitive).

@@ -1,10 +1,13 @@
 module.exports = {
 
 
-  friendlyName: 'Time from...',
+  friendlyName: 'Get elapsed time (time ago)',
 
 
-  description: 'Format a human-readable a JS timestamp (epoch ms) and timezone into a human-readable "time from" format (e.g. "6 minutes ago").',
+  description: 'Format a JS timestamp (epoch ms) and timezone into a human-readable "time ago" format (e.g. "6 minutes ago" or "In 3 days").',
+
+
+  extendedDescription: 'If the "To..." datetime is later than the "From...", the result will be a future-tensed string (e.g. "In a few seconds", "In 3 days").  Otherwise it will be a past-tensed string (e.g. "6 minutes ago").',
 
 
   sideEffects: 'cacheable',

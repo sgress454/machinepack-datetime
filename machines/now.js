@@ -1,13 +1,19 @@
 module.exports = {
 
 
-  friendlyName: 'Now',
+  friendlyName: 'Get current JS timestamp (Now)',
 
 
   description: 'Construct a new JS timestamp from the current time.',
 
 
+  sideEffects: 'idempotent',
+
+
   sync: true,
+
+
+  inputs: {},
 
 
   exits: {
@@ -28,6 +34,7 @@ module.exports = {
     // Create a new Javascript Date object, run `.getTime()` to get a JS timestamp
     // (in milliseconds) and return it through the `success` exit.
     return exits.success((new Date()).getTime());
+
   }
 
 
