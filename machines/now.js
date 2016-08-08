@@ -7,7 +7,7 @@ module.exports = {
   description: 'Construct a new JS timestamp from the current time.',
 
 
-  sideEffects: 'idempotent',
+  sideEffects: 'cacheable',
 
 
   sync: true,
