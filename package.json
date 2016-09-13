@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^3.8.0",
-    "machine": "^10.3.1",
+    "machine": "^13.0.0-0",
     "moment": "^2.9.0",
     "moment-timezone": "^0.3.1"
   },
